@@ -4,17 +4,75 @@ import java.util.Arrays;
 
 public class ArraysMain {
 
+	private String[] suits;
+	private String[] values;
+	
 	private int[] testArray;
 	
 	public ArraysMain() {
-			testArray = new int[50];
-			populate(testArray);
-			countOccurences(testArray,2,12);
-			System.out.println(Arrays.toString(testArray));
+		suits = new String[4];
+		suits[0] = "Clubs";
+		suits[1] = "Hearts";
+		suits[2] = "Diamonds";
+		suits[3] = "Spades";
+		values = new String[13];
+		for(int i = 0;  i < values.length; i++) {
+			values[i] = ""+(i+1);
+		}
+		values[0] = "Ace";
+		values[12] = "King";
+		values[11] = "Queen";
+		values[10] = "Jack";
+		printDeck();
+		
+//		System.out.println(Arrays.toString(testArray));
 	}
 	
+	private String[] printDeck() {
+		String[] deck = new String[52];
+		int index = 0;
+		for (String suit : suits) {
+			for (String value : values) {
+				deck[index] = value + " of " + suit;
+				index++;
+			}
+		}
+		return deck;
+	}
+
+	private void shuffle(int[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			swap(arr,i,(int)(Math.random()*arr.length));
+		}
+	}
+
+	/**
+	 * Swaps elements at i and k
+	 * @param arr
+	 * @param i
+	 * @param j
+	 */
+	
+	private void swap(int[] arr, int i, int j) {
+		int placeholder = arr[i];
+		arr[j] = i;
+		arr[j] = placeholder;
+	}
+
+	/**
+	 * Populate arr with numbers from 1 to arr.length, in order
+	 * @param arr
+	 */
+	
+	private void populate1toN(int[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			arr[i] = (i+1);
+			
+		}
+	}
+
 	private void countOccurences(int[] arr, int start, int end) {
-		//why create an array with this length
+		//why create an array with this length?
 		int[] counter = new int[end - start + 1];
 		for(int value: arr) {
 			//why value - start
@@ -22,18 +80,19 @@ public class ArraysMain {
 		}
 		for(int i = 0; i < counter.length; i++) {
 			System.out.println("The value "+(i+start)
-					+" was rolled "+counter[i] + "times.");
+					+" was rolled "+counter[i] + " times.");
 		}
 	}
 
 	/**
+	 * Populate arr with numbers from 1 to arr.length, in order
 	 * This method populates arr with results from rolling 2 dice
 	 * @param arr
 	 */
 	private void populate(int[] arr) {
 		//correct way:
 		for(int i = 0; i < arr.length; i++) {
-			arr[i] = diceRoll(2);
+			arr[i] = diceRoll(3);
 		}
 		//incorrect way:
 //		for(int value: arr) {
