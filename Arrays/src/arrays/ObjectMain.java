@@ -11,7 +11,7 @@ public class ObjectMain {
 		 for(Person p: people) {
 			 p.mingle(people);;
 			 System.out.println(p);;
-			 p.statYourFriends();
+			 p.stateYourFriends();
 		 }
 	}
 	/**
