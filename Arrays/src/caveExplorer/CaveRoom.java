@@ -90,7 +90,7 @@ public class CaveRoom {
 	 */
 	public void setConnection(int direction, CaveRoom anotherRoom, Door door) {
 		addRoom(direction, anotherRoom, door);
-		anotherRoom(oppositeDirection(direction), this, door);
+		anotherRoom.addRoom(oppositeDirection(direction), this, door);
 	}
 	
 	private void addRoom(int dir, CaveRoom caveRoom, Door door) {
@@ -143,7 +143,7 @@ public class CaveRoom {
 		CaveExplorer.currentRoom.enter();
 		
 		//5. Set up doors
-		c[0][1].setConnection(SOUTH, c[1][1], new D`oor());
+		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
 		
 	}
@@ -200,6 +200,10 @@ public class CaveRoom {
 
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+
+	public Door getDoor(int direction) {
+		return doors[direction];
 	}
 
 }
