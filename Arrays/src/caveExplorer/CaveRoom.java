@@ -101,17 +101,44 @@ public class CaveRoom {
 
 	public void interpretInput(String input) {
 		while(!isValid(input)) {
-			System.out.println("You can only enter 'w', 'a', 's', or 'd'.");
+			printValidMoves();
+			
 			input = CaveExplorer.in.nextLine();
 		}
-		int direction = "wdsa".indexOf(input);
-		/*
-		 * convert w,a,s,d to directions 0,3,2,1
-		 * NO IF STATEMENTS
-		 */
+		int direction = validMoves().indexOf(input);
+		// convert w,a,s,d to directions 0,3,2,1
+		 
+		if (direction < 4) {
+			goToRoom(direction);
+		} else {
+			performAction(direction);
+		}
 		goToRoom(direction);
 	}
 	
+	/**
+	 * override to create response to keys other than wdsa
+	 * @param direction
+	 */
+	public void performAction(int direction) {
+		CaveExplorer.print("That ket does nothing.");
+	}
+
+	/**
+	 * Override to change description of possible moves
+	 */
+	private void printValidMoves() {
+		System.out.println("You can only enter 'w', 'a', 's', or 'd'.");
+		
+	}
+
+	/**
+	 * override to add more moves
+	 * @return
+	 */
+	public String validMoves() {
+		return "wdsa";
+	}
 	/**
 	 * returns true if w,a,s, or d is the input (NO IF STATEMENTS)
 	 * @param input
@@ -120,7 +147,7 @@ public class CaveRoom {
 	private boolean isValid(String input) {
 	//	String inputChars = "wdsa";
 	//	return inputChars.indexOf(input) != -1;
-		return "wasd".indexOf(input) > -1 && input.length() == -1;
+		return validMoves().indexOf(input) > -1 && input.length() == -1;
 	}
 	
 	/**
