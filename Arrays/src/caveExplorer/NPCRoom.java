@@ -62,6 +62,7 @@ public class NPCRoom extends CaveRoom {
 		}else {
 			return super.getContents();
 		}
+	}	
 	
 	public String getDescription() {
 		if(containsNPC() && npc.isActive()){
@@ -71,8 +72,6 @@ public class NPCRoom extends CaveRoom {
 		}
 		else {
 			return super.getDescription();
-		}
-			
 		}
 	}
 }
