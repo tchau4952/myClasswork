@@ -57,10 +57,4 @@ public class Habitat extends Environment {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
 }
