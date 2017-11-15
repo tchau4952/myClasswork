@@ -21,7 +21,7 @@ public class RoamingAnimal extends Animal {
 	public static void main(String[] args) {
 		int capacity = 6;
 		Habitat h = new Habitat(capacity);
-		for(int i = 0; i < capacity; i++) {
+		for(int i = 0; i < 3; i++) {
 			RoamingAnimal r = new RoamingAnimal(h);
 			h.addAnimal(r);
 		}
