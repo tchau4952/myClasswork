@@ -3,7 +3,7 @@ package algorithms;
 public class LionsPuzzle {
 
 	public static void main(String[] args) {
-		int numberOfLions = 101;
+		int numberOfLions = 3;
 		if(willEat(numberOfLions)) {
 			System.out.println("Eat the sheep!");
 		}else {
@@ -14,8 +14,9 @@ public class LionsPuzzle {
 	private static boolean willEat(int numberOfLions) {
 		if(numberOfLions == 1) {
 			return true;
+		} else {
+			return !willEat(numberOfLions - 1);
 		}
-		return false;
 	}
 
 	
