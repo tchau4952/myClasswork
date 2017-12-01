@@ -3,7 +3,7 @@ package algorithms;
 public class RecursionExercises {
 
 	 public static void main(String[] args){
-		 int value = 5;
+		 int value = 18;
 		 System.out.println(value+"! is equal to "+factorial(value));
 		 System.out.println(value+ " has "+countPrimeFactors(value, 2)+" prime factors.");
 	 }
@@ -20,7 +20,7 @@ public class RecursionExercises {
 			
 			
 	}
-		 public static int factorial(int value) {
+		 public static int factorial(int value) {   
 		if(value <= 1) {
 			return 1;
 		}else {
